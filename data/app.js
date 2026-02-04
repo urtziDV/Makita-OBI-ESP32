@@ -324,33 +324,44 @@ function refreshStatus() {
  * Inicializa el gráfico de historial usando Chart.js
  */
 function initChart() {
-  const ctx = el('historyChart').getContext('2d');
-  if (!ctx) return;
+  try {
+    if (typeof Chart === 'undefined') {
+      log("⚠️ Chart.js no cargado. Revisa chart.min.js");
+      return;
+    }
+    const canvas = el('historyChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-  historyChart = new Chart(ctx, {
-    type: 'line',
-    data: historyData,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      animation: false,
-      scales: {
-        x: { display: false },
-        y: {
-          min: 2.5,
-          max: 4.3,
-          ticks: { color: 'rgba(128,128,128,0.8)' },
-          grid: { color: 'rgba(128,128,128,0.1)' }
-        }
-      },
-      plugins: {
-        legend: {
-          display: true,
-          labels: { boxWidth: 10, font: { size: 10 }, color: 'rgba(128,128,128,0.8)' }
+    historyChart = new Chart(ctx, {
+      type: 'line',
+      data: historyData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        scales: {
+          x: { display: false },
+          y: {
+            min: 2.5,
+            max: 4.3,
+            ticks: { color: 'rgba(128,128,128,0.8)' },
+            grid: { color: 'rgba(128,128,128,0.1)' }
+          }
+        },
+        plugins: {
+          legend: {
+            display: true,
+            labels: { boxWidth: 10, font: { size: 10 }, color: 'rgba(128,128,128,0.8)' }
+          }
         }
       }
-    }
-  });
+    });
+    log("📊 Gráfico de historial inicializado.");
+  } catch (e) {
+    log("❌ Error inicializando gráfico: " + e.message);
+  }
 }
 
 function updateChart(cellVoltages) {
@@ -519,6 +530,7 @@ function handleMessage(msg) {
     renderCells(msg.data);
     if (msg.features) updateButtonStates(msg.features);
     el('overviewCard').classList.remove('hidden');
+    if (msg.data.cell_voltages) updateChart(msg.data.cell_voltages);
   } else if (msg.type === 'dynamic_data') {
     if (lastData) {
       Object.assign(lastData, msg.data);
