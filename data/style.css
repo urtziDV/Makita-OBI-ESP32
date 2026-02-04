@@ -721,6 +721,54 @@ body.dark-mode .progress-bar-container {
     word-break: break-all;
 }
 
+/* --- HUD de Desbalanceo Dinámico --- */
+.imbalance-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.4s ease;
+    margin-left: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bal-ok {
+    background: rgba(46, 125, 50, 0.15);
+    color: #4caf50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.bal-warn {
+    background: rgba(230, 81, 0, 0.15);
+    color: #ff9800;
+    border: 1px solid rgba(255, 152, 0, 0.4);
+}
+
+.bal-crit {
+    background: rgba(198, 40, 40, 0.2);
+    color: #ef5350;
+    border: 1px solid rgba(239, 83, 80, 0.5);
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 83, 80, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px rgba(239, 83, 80, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 83, 80, 0);
+    }
+}
+
 /* --- Notificaciones Toast --- */
 .toast {
     position: fixed;

@@ -83,7 +83,10 @@ const TRANSLATIONS = {
     lbl_wifi_hint: "El ESP32 se reiniciará para conectar. Mantendrá el AP Makita como respaldo.",
     msg_presence_detected: " (Batería detectada)",
     msg_presence_empty: " (Bus vacío)",
-    lbl_total_voltage: "Voltaje Pack"
+    lbl_total_voltage: "Voltaje Pack",
+    bal_ok: "Equilibrado",
+    bal_warn: "Desviación",
+    bal_crit: "Crítico"
   },
   en: {
     subtitle: "Battery Diagnostics",
@@ -154,7 +157,10 @@ const TRANSLATIONS = {
     lbl_wifi_hint: "The ESP32 will restart to connect. It will keep the Makita AP as backup.",
     msg_presence_detected: " (Battery detected)",
     msg_presence_empty: " (Empty Bus)",
-    lbl_total_voltage: "Pack Voltage"
+    lbl_total_voltage: "Pack Voltage",
+    bal_ok: "Balanced",
+    bal_warn: "Imbalanced",
+    bal_crit: "Critical"
   }
 };
 
@@ -653,6 +659,9 @@ function renderAdvancedDiagnostics(d) {
 
   // HUD de Desbalanceo
   renderImbalanceHUD(d);
+
+  // Badge de Desbalanceo Dinámico (Top)
+  updateImbalanceBadge(d.cell_diff);
 }
 
 let lastSentSoh = -1;
@@ -774,6 +783,36 @@ function renderImbalanceHUD(d) {
             </div>
         `;
   }).join('');
+}
+
+/**
+ * Actualiza el badge visual de desbalanceo en la cabecera.
+ */
+function updateImbalanceBadge(diff) {
+  const badge = el('imbalanceBadge');
+  if (!badge) return;
+
+  badge.classList.remove('hidden');
+  badge.classList.remove('bal-ok', 'bal-warn', 'bal-crit');
+
+  let text = '';
+  let icon = '';
+
+  if (diff < 0.05) {
+    badge.classList.add('bal-ok');
+    text = t('bal_ok');
+    icon = '✅';
+  } else if (diff < 0.15) {
+    badge.classList.add('bal-warn');
+    text = t('bal_warn');
+    icon = '⚠️';
+  } else {
+    badge.classList.add('bal-crit');
+    text = t('bal_crit');
+    icon = '🚨';
+  }
+
+  badge.innerHTML = `<span>${icon}</span> <span>${text}</span>`;
 }
 
 function updateButtonStates(f) {
