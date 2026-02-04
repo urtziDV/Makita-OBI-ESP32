@@ -44,7 +44,7 @@ Herramienta avanzada de diagnóstico para baterías Makita LXT (18V) basada en E
 
 ## ⚖️ Licencia y Uso
 
-Este proyecto ha sido evolucionado por **Urtzi (urtziDV)** basándose en el trabajo original de **Belik1982**.
+Este proyecto ha sido evolucionado basando en el trabajo original de **Belik1982**.
 
 - **Licencia**: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es) (Atribución-NoComercial-CompartirIgual).
 - **Uso Comercial**: Queda estrictamente prohibida la venta de este software o de dispositivos que lo incluyan sin autorización expresa.
