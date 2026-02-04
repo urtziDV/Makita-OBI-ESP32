@@ -51,4 +51,4 @@ Este proyecto ha sido mejorado basado en el trabajo original de **Belik1982** (h
 - **Créditos**: Se debe mantener siempre la referencia a los autores originales.
 
 ---
-*Desarrollado con ❤️ por Urtzi para la comunidad de herramientas eléctricas.*
+*Desarrollado para la comunidad de amantes de las herramientas y la electrónica.*
