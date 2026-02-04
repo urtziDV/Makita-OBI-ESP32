@@ -2,7 +2,7 @@
 
 ¡Objetivo conseguido! El ESP32 ya tiene el firmware y la web funcionando en su **Versión 1.1**.
 
-![Interfaz Principal](file:///d:/GITHUB/Makita-OBI-ESP32/docs/img/app_main.jpg)
+![Interfaz Principal](img/app_main.jpg)
 
 ## Logros
 
@@ -18,11 +18,11 @@
 ## Galería del Proyecto
 
 ````carousel
-![Estado del Paquete y Celdas](file:///d:/GITHUB/Makita-OBI-ESP32/docs/img/app_details.jpg)
+![Estado del Paquete y Celdas](img/app_details.jpg)
 <!-- slide -->
-![Gráfico de Historial en Tiempo Real](file:///d:/GITHUB/Makita-OBI-ESP32/docs/img/app_graph.jpg)
+![Gráfico de Historial en Tiempo Real](img/app_graph.jpg)
 <!-- slide -->
-![Configuración de Sistema y OTA](file:///d:/GITHUB/Makita-OBI-ESP32/docs/img/app_system.jpg)
+![Configuración de Sistema y OTA](img/app_system.jpg)
 ````
 
 ## Cómo usar las nuevas funciones

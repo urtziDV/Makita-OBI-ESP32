@@ -12,7 +12,14 @@ Herramienta avanzada de diagnóstico para baterías Makita LXT (18V) basada en E
 - **Interfaz Web Premium**: Con modo oscuro, bilingüe (ES/EN) y Mobile Friendly.
 - **Compatibilidad**: Diseñado para funcionar en cualquier ESP32 (incluido Mini/SuperMini).
 
-![Interfaz Web Premium](file:///d:/GITHUB/Makita-OBI-ESP32/docs/img/app_main.jpg)
+## 📱 Capturas de Pantalla
+
+| Vista Principal | Salud y Celdas | Gráficos e Historial |
+| :---: | :---: | :---: |
+| ![Main](docs/img/app_main.jpg) | ![Details](docs/img/app_details.jpg) | ![Graph](docs/img/app_graph.jpg) |
+
+> [!TIP]
+> Accede a la configuración avanzada y actualización OTA desde el icono de engranaje ⚙️.
 
 ## 📂 Estructura del Proyecto
 
