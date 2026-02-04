@@ -2,13 +2,14 @@
 
 Herramienta avanzada de diagnóstico para baterías Makita LXT (18V) basada en ESP32.
 
-## ✨ Características de la Versión 1.0
+## ✨ Características de la Versión 1.1
 
 - **Triple Verificación de Presencia**: Eliminación de falsos positivos (baterías fantasma).
-- **WiFi Dual**: Acceso simultáneo vía AP (Directo) o Station (Red de tu taller).
+- **WiFi Dual y mDNS**: Acceso simultáneo vía AP/Station y URL amigable **<http://makita.local>**.
 - **Gráficos en Tiempo Real**: Historial de voltajes celda por celda para diagnóstico de fatiga.
+- **HUD Dinámico**: Indicador visual inteligente de salud del pack (Equilibrado/Crítico).
 - **Asistente de Balanceo**: Indicaciones precisas para equilibrar packs descompensados.
-- **Interfaz Web Premium**: Con modo oscuro, bilingüe (ES/EN) y visualización HUD.
+- **Interfaz Web Premium**: Con modo oscuro, bilingüe (ES/EN) y Mobile Friendly.
 - **Compatibilidad**: Diseñado para funcionar en cualquier ESP32 (incluido Mini/SuperMini).
 
 ## 📂 Estructura del Proyecto
