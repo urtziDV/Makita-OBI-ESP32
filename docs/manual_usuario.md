@@ -19,7 +19,7 @@ Bienvenido a la herramienta de diagnóstico **Makita OBI ESP32**. Este manual ex
 ## 3. Gráficos de Historial
 
 - Debajo del estado de las celdas verás un gráfico en tiempo real.
-- Cada línea representa una celda (1 a 5).
+- Cada línea representa una celda (1 a 5). En baterías BL14 se mostrarán automáticamente solo 4 líneas.
 - Este gráfico es útil para ver si una celda cae de voltaje más rápido que las demás cuando la batería está en uso.
 
 ## 4. Configuración WiFi (Modo Taller)
@@ -45,7 +45,7 @@ Para que el dispositivo se conecte a tu red WiFi habitual:
 | No aparece el WiFi | Pin en corto o conflicto Serial. | Asegúrate de haber movido el ENABLE al Pin 5. |
 | Sale "(Bus vacío)" | Mala conexión física. | Revisa que el cable de datos toque bien el pin central. |
 | La web no carga | Falta cargar el Filesystem. | Ejecuta "Upload Filesystem Image" desde PlatformIO. |
-| Voltajes en 0.00V | Batería dormida. | Pulsa "Leer Info" para despertar el BMS. |
+| Voltajes en 0.00V | Batería dormida o celda inexistente. | Pulsa "Leer Info". En BL14 la 5ª celda siempre está vacía. |
 
 ---
-Generado por Makita OBI ESP32 • Versión 1.1
+Generado por Makita OBI ESP32 • Versión 1.2

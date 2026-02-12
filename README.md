@@ -1,8 +1,8 @@
 # Makita OBI ESP32 🔋
 
-Herramienta avanzada de diagnóstico para baterías Makita LXT (18V) basada en ESP32.
+Herramienta avanzada de diagnóstico para baterías Makita LXT de 18V (BL18) y 14.4V (BL14) basada en ESP32.
 
-## ✨ Características de la Versión 1.1
+## ✨ Características de la Versión 1.2
 
 - **Triple Verificación de Presencia**: Eliminación de falsos positivos (baterías fantasma).
 - **WiFi Dual y mDNS**: Acceso simultáneo vía AP/Station y URL amigable **<http://makita.local>**.
@@ -44,7 +44,7 @@ Herramienta avanzada de diagnóstico para baterías Makita LXT (18V) basada en E
 
 ## ⚖️ Licencia y Uso
 
-Este proyecto ha sido basado en el trabajo original de **Belik1982** (https://github.com/Belik1982/esp32-makita-bms-reader).
+Este proyecto ha sido basado en el trabajo original de **Belik1982** (<https://github.com/Belik1982/esp32-makita-bms-reader>).
 
 - **Licencia**: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es) (Atribución-NoComercial-CompartirIgual).
 - **Uso Comercial**: Queda estrictamente prohibida la venta de este software o de dispositivos que lo incluyan sin autorización expresa.

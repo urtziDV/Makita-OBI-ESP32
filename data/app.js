@@ -9,7 +9,12 @@ const MAKITA_MODELS = {
   "BL1840": { cap: "4.0Ah", cells: "10x 18650", config: "5S2P", v_nom: "18V" },
   "BL1850": { cap: "5.0Ah", cells: "10x 18650", config: "5S2P", v_nom: "18V" },
   "BL1850B": { cap: "5.0Ah", cells: "10x 18650", config: "5S2P", v_nom: "18V" },
-  "BL1860B": { cap: "6.0Ah", cells: "10x 18650", config: "5S2P", v_nom: "18V" }
+  "BL1860B": { cap: "6.0Ah", cells: "10x 18650", config: "5S2P", v_nom: "18V" },
+  "BL1415": { cap: "1.5Ah", cells: "4x 18650", config: "4S1P", v_nom: "14.4V" },
+  "BL1430": { cap: "3.0Ah", cells: "8x 18650", config: "4S2P", v_nom: "14.4V" },
+  "BL1440": { cap: "4.0Ah", cells: "8x 18650", config: "4S2P", v_nom: "14.4V" },
+  "BL1450": { cap: "5.0Ah", cells: "8x 18650", config: "4S2P", v_nom: "14.4V" },
+  "BL1460": { cap: "6.0Ah", cells: "8x 18650", config: "4S2P", v_nom: "14.4V" }
 };
 
 // --- Traducciones (ES, EN) ---
@@ -19,7 +24,7 @@ const TRANSLATIONS = {
     sectionTitle: "Operaciones",
     section_overview: "Estado del Paquete",
     rawTitle: "Consola de Sistema",
-    footerText: "Versión 1.1 • ESP32 Control",
+    footerText: "Versión 1.2 • ESP32 Control",
     btn_read: "Leer Información",
     btn_dynamic: "Leer Voltajes",
     btn_clear_err: "Resetear Errores",
@@ -97,7 +102,7 @@ const TRANSLATIONS = {
     sectionTitle: "Operations",
     section_overview: "Pack Overview",
     rawTitle: "System Console",
-    footerText: "Version 1.1 • ESP32 Control",
+    footerText: "Version 1.2 • ESP32 Control",
     btn_read: "Read Info",
     btn_dynamic: "Read Voltages",
     btn_clear_err: "Reset Errors",
@@ -195,6 +200,31 @@ let historyData = {
     fill: false
   }))
 };
+
+function updateHistoryDatasets(cellCount) {
+  if (historyData.datasets.length === cellCount) return;
+
+  if (cellCount < historyData.datasets.length) {
+    historyData.datasets = historyData.datasets.slice(0, cellCount);
+  } else {
+    for (let i = historyData.datasets.length; i < cellCount; i++) {
+      historyData.datasets.push({
+        label: `${t('cell')} ${i + 1}`,
+        data: [],
+        borderColor: `hsl(${i * 60}, 70%, 50%)`,
+        backgroundColor: `hsla(${i * 60}, 70%, 50%, 0.1)`,
+        borderWidth: 2,
+        pointRadius: 0,
+        tension: 0.3,
+        fill: false
+      });
+    }
+  }
+  if (historyChart) {
+    historyChart.data.datasets = historyData.datasets;
+    historyChart.update();
+  }
+}
 
 // Helpers para acceso rápido al DOM
 const el = id => document.getElementById(id);
@@ -382,6 +412,8 @@ function updateChart(cellVoltages) {
     historyData.datasets.forEach(ds => ds.data.shift());
   }
 
+  updateHistoryDatasets(cellVoltages.length);
+
   historyData.labels.push(now);
   cellVoltages.forEach((v, i) => {
     if (historyData.datasets[i]) {
@@ -389,7 +421,7 @@ function updateChart(cellVoltages) {
     }
   });
 
-  historyChart.update('none'); // Update sin animación para rendimiento
+  historyChart.update('none');
 }
 
 /**
@@ -476,6 +508,10 @@ function enableSimulation() {
     { // 4. Bloqueada (BMS Error)
       model: "BL1860B", cycles: 450, lock: "BLOQUEADA", cap: "6.0Ah", date: "05/06/2020",
       volts: [3.85, 3.82, 3.79, 3.81, 3.84], diff: 0.06, pack: 19.11
+    },
+    { // 5. BL14 (4 Celdas)
+      model: "BL1430", cycles: 85, lock: "DESBLOQUEADA", cap: "3.0Ah", date: "12/03/2023",
+      volts: [3.95, 3.92, 3.98, 3.91], diff: 0.07, pack: 15.76
     }
   ];
 

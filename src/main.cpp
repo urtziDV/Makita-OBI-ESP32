@@ -73,7 +73,7 @@ void sendJsonResponse(const String& type, const BatteryData& data, const Support
     dataObj["battery_type"] = data.battery_type;
     dataObj["pack_voltage"] = data.pack_voltage;
     JsonArray cellV = dataObj.createNestedArray("cell_voltages");
-    for(int i=0; i<5; i++) cellV.add(data.cell_voltages[i]);
+    for(int i=0; i<data.cell_count; i++) cellV.add(data.cell_voltages[i]);
     dataObj["cell_diff"] = data.cell_diff;
     dataObj["temp1"] = data.temp1;
     dataObj["temp2"] = data.temp2;

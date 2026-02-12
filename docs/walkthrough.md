@@ -1,6 +1,6 @@
 # Resumen de Puesta en Marcha
 
-¡Objetivo conseguido! El ESP32 ya tiene el firmware y la web funcionando en su **Versión 1.1**.
+¡Objetivo conseguido! El ESP32 ya tiene el firmware y la web funcionando en su **Versión 1.2**.
 
 ![Interfaz Principal](img/Salud_Balanceo)
 
@@ -12,6 +12,7 @@
 - **Modo WiFi Station**: Conexión al router del taller y acceso simplificado vía **makita.local**.
 - **Gráficos de Historial**: Visualización en tiempo real de la evolución de las celdas.
 - **HUD Dinámico**: Indicador visual inteligente de salud del pack (Equilibrado/Crítico).
+- **Soporte BL14 (14.4V)**: Detección automática y renderizado dinámico para baterías de 4 celdas.
 - **OTA Rediseñado**: Nueva interfaz premium para la actualización de firmware con barra de progreso detallada.
 - **Sincronización GitHub**: Repositorio profesional con documentación completa y archivos optimizados.
 
@@ -48,7 +49,7 @@ Usa el gráfico de historial para detectar celdas que caen de voltaje bajo carga
 
 ## Notas Técnicas Finales
 
-- **Versión**: 1.1
+- **Versión**: 1.2
 - **Pin Enable**: GPIO 5
 - **Pin OneWire**: GPIO 4
 - **Velocidad Serial**: 115200 baudios

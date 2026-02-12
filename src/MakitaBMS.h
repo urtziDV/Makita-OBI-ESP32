@@ -41,6 +41,7 @@ struct BatteryData {
     String lock_status = "N/A";     // Estado de bloqueo del controlador
     String status_code = "00";      // Código de estado interno en HEX
     float pack_voltage = 0.0;       // Voltaje total sumado del paquete (V)
+    int cell_count = 5;             // Número de celdas en serie (5 para 18V, 4 para 14.4V)
     float cell_voltages[5] = {0.0}; // Voltaje individual de cada una de las 5 celdas
     float cell_diff = 0.0;          // Diferencia máxima entre la celda más alta y más baja
     float temp1 = 0.0, temp2 = 0.0; // Temperaturas medidas por los sensores internos (°C)

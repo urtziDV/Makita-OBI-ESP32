@@ -161,6 +161,13 @@ BMSStatus MakitaBMS::readStaticData(BatteryData &data, SupportedFeatures &featur
     String m_str = getModel(); 
     if (m_str != "") { _controller = ControllerType::STANDARD; data.model = m_str; } 
     else { m_str = getF0513Model(); if (m_str != "") { _controller = ControllerType::F0513; data.model = m_str; } }
+
+    // Detección automática de número de celdas según el modelo
+    if (data.model.startsWith("BL14") || data.model.startsWith("BL14")) {
+        data.cell_count = 4;
+    } else {
+        data.cell_count = 5;
+    }
     
     digitalWrite(_enable_pin, HIGH); // Apagado tras identificar
 
@@ -195,12 +202,16 @@ BMSStatus MakitaBMS::readDynamicData(BatteryData &data) {
         // Conversión de bytes a voltajes reales
         data.pack_voltage = ((rsp[1] << 8) | rsp[0]) / 1000.0f; 
         float min_v = 5.0, max_v = 0.0; 
-        for(int i=0; i<5; i++) { 
+        for(int i=0; i<data.cell_count; i++) { 
             float val = ((rsp[i*2+3] << 8) | rsp[i*2+2]) / 1000.0f; 
             data.cell_voltages[i] = val; 
             if (val > 0.5 && val < min_v) min_v = val; 
             if (val > max_v) max_v = val; 
         } 
+        // Limpiamos celdas no usadas si es 4S
+        if (data.cell_count < 5) {
+            for(int i=data.cell_count; i<5; i++) data.cell_voltages[i] = 0.0;
+        }
         data.cell_diff = (max_v > min_v) ? (max_v - min_v) : 0.0; 
         data.temp1 = ((rsp[15] << 8) | rsp[14]) / 100.0f; 
         data.temp2 = ((rsp[17] << 8) | rsp[16]) / 100.0f; 
@@ -220,18 +231,22 @@ BMSStatus MakitaBMS::readDynamicData(BatteryData &data) {
         
         byte r[2]; float v[5], t_v = 0;
         // Solicita el voltaje de cada celda por separado
-        exec((const byte[]){0x31}, 1, r, 2); v[0]=((r[1]<<8)|r[0])/1000.0f;
-        exec((const byte[]){0x32}, 1, r, 2); v[1]=((r[1]<<8)|r[0])/1000.0f;
-        exec((const byte[]){0x33}, 1, r, 2); v[2]=((r[1]<<8)|r[0])/1000.0f;
-        exec((const byte[]){0x34}, 1, r, 2); v[3]=((r[1]<<8)|r[0])/1000.0f;
-        exec((const byte[]){0x35}, 1, r, 2); v[4]=((r[1]<<8)|r[0])/1000.0f;
+        for(int i=0; i<data.cell_count; i++) {
+            exec((const byte[]){(byte)(0x31 + i)}, 1, r, 2);
+            v[i] = ((r[1]<<8)|r[0])/1000.0f;
+        }
+        
         exec((const byte[]){0x52}, 1, r, 2); data.temp1=((r[1]<<8)|r[0])/100.0f;
         
         float min_v = 5.0, max_v = 0.0;
         for(int i=0; i<5; i++) { 
-            data.cell_voltages[i] = v[i]; t_v += v[i]; 
-            if(v[i] > 0.5 && v[i] < min_v) min_v = v[i]; 
-            if(v[i] > max_v) max_v = v[i]; 
+            if (i < data.cell_count) {
+                data.cell_voltages[i] = v[i]; t_v += v[i]; 
+                if(v[i] > 0.5 && v[i] < min_v) min_v = v[i]; 
+                if(v[i] > max_v) max_v = v[i]; 
+            } else {
+                data.cell_voltages[i] = 0.0;
+            }
         }
         data.pack_voltage = t_v; 
         data.cell_diff = (max_v > 0.5 && max_v > min_v) ? (max_v - min_v) : 0.0;

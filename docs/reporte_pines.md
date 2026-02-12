@@ -16,4 +16,4 @@ Resumen de la asignación de pines del ESP32 para este proyecto.
 - **ONEWIRE**: El cable de datos central de la batería debe estar en el **Pin 4**.
 
 ---
-Configuración optimizada para Versión 1.1
+Configuración optimizada para Versión 1.2
