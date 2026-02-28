@@ -32,6 +32,7 @@ Herramienta avanzada de diagnóstico para baterías Makita LXT de 18V (BL18) y 1
 
 - **ESP32** (Cualquier variante).
 - Transistor NPN (BC547 o similar) + Resistencia 4.7kΩ (para el pin ENABLE).
+- 2x Resistencias 4.7kΩ en paralelo (desde el pin 5V al colector del transistor).
 - Resistencia Pull-up 4.7kΩ (para el pin DATA).
 - [Ver Esquema Eléctrico](./docs/esquema_electrico.md)
 

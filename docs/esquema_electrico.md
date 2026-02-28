@@ -11,10 +11,11 @@ graph TD
         3V3[3V3]
         G4[GPIO 4 - DATA]
         G5[GPIO 5 - ENABLE]
+        5V[5V / VIN]
     end
 
     subgraph "Circuito Interfaz"
-        R1[Resistencia 4.7kΩ]
+        R1["2x Resistencia 4.7kΩ (Paralelo)"]
         Q1[Transistor NPN / MOSFET]
         R2[Resistencia 4.7kΩ]
     end
@@ -27,7 +28,7 @@ graph TD
 
     %% Conexiones de Alimentación
     B_GND --- GND
-    3V3 --- R1
+    5V --- R1
     R1 --- G4
     G4 --- B_DATA
 
@@ -51,7 +52,8 @@ graph TD
 
 1. **Microcontrolador**: ESP32 DevKit V1 o ESP32 Mini.
 2. **Resistencias**:
-    - 1x 4.7kΩ (Pull-up datos).
+    - 1x 4.7kΩ (Pull-up datos a 3.3V).
+    - 2x 4.7kΩ en paralelo (Pull-up de alimentación desde 5V al transistor).
     - 1x 4.7kΩ (Base transistor).
 3. **Semiconductor**:
     - 1x Transistor NPN (BC547) o MOSFET canal N (2N7000) para habilitación.
