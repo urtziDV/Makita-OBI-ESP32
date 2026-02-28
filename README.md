@@ -31,7 +31,7 @@ Herramienta avanzada de diagnóstico para baterías Makita LXT de 18V (BL18) y 1
 ## 🛠️ Requisitos de Hardware
 
 - **ESP32** (Cualquier variante).
-- Transistor NPN (BC547 o similar) + Resistencia 1kΩ (para el pin ENABLE).
+- Transistor NPN (BC547 o similar) + Resistencia 4.7kΩ (para el pin ENABLE).
 - Resistencia Pull-up 4.7kΩ (para el pin DATA).
 - [Ver Esquema Eléctrico](./docs/esquema_electrico.md)
 

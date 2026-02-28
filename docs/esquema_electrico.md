@@ -16,7 +16,7 @@ graph TD
     subgraph "Circuito Interfaz"
         R1[Resistencia 4.7kΩ]
         Q1[Transistor NPN / MOSFET]
-        R2[Resistencia 1kΩ]
+        R2[Resistencia 4.7kΩ]
     end
 
     subgraph "Batería Makita (Puerto Amarillo)"
@@ -45,14 +45,14 @@ graph TD
 | **GND** | Terminal **-** Batería | Masa común obligatoria. |
 | **GPIO 4** | **DATA (OneWire)** | Comunicación bidireccional con el BMS de la batería. |
 | **GPIO 4** | Resistencia **4.7kΩ** a **3.3V** | Pull-up externo (Recomendado para estabilidad). |
-| **GPIO 5** | Base Transistor (Vía R 1kΩ) | Pin de habilitación (ENABLE). |
+| **GPIO 5** | Base Transistor (Vía R 4.7kΩ) | Pin de habilitación (ENABLE). |
 
 ## Componentes Necesarios (BOM)
 
 1. **Microcontrolador**: ESP32 DevKit V1 o ESP32 Mini.
 2. **Resistencias**:
     - 1x 4.7kΩ (Pull-up datos).
-    - 1x 1kΩ (Base transistor).
+    - 1x 4.7kΩ (Base transistor).
 3. **Semiconductor**:
     - 1x Transistor NPN (BC547) o MOSFET canal N (2N7000) para habilitación.
 4. **Conector**: Adaptador impreso en 3D o terminales de pala.

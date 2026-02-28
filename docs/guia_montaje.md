@@ -16,7 +16,7 @@ Sigue estos pasos para construir tu propia herramienta de diagnóstico **Makita 
 
 ### 3. Circuito de Habilitación
 
-- Conecta el **GPIO 5** a la base de un transistor NPN (o gate de un MOSFET) a través de una resistencia de 1kΩ.
+- Conecta el **GPIO 5** a la base de un transistor NPN (o gate de un MOSFET) a través de una resistencia de 4.7kΩ.
 - El transistor debe actuar como un interruptor para activar el BMS.
 
 ## Fase 2: Configuración del Software
