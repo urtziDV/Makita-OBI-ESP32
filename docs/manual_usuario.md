@@ -48,4 +48,4 @@ Para que el dispositivo se conecte a tu red WiFi habitual:
 | Voltajes en 0.00V | Batería dormida o celda inexistente. | Pulsa "Leer Info". En BL14 la 5ª celda siempre está vacía. |
 
 ---
-Generado por Makita OBI ESP32 • Versión 1.2
+Generado por Makita OBI ESP32 • Versión 1.3

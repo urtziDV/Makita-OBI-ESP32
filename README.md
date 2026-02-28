@@ -2,7 +2,7 @@
 
 Herramienta avanzada de diagnóstico para baterías Makita LXT de 18V (BL18) y 14.4V (BL14) basada en ESP32.
 
-## ✨ Características de la Versión 1.2
+## ✨ Características de la Versión 1.3
 
 - **Triple Verificación de Presencia**: Eliminación de falsos positivos (baterías fantasma).
 - **WiFi Dual y mDNS**: Acceso simultáneo vía AP/Station y URL amigable **<http://makita.local>**.

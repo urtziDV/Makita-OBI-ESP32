@@ -1,6 +1,6 @@
 # Resumen de Puesta en Marcha
 
-¡Objetivo conseguido! El ESP32 ya tiene el firmware y la web funcionando en su **Versión 1.2**.
+¡Objetivo conseguido! El ESP32 ya tiene el firmware y la web funcionando en su **Versión 1.3**.
 
 ![Interfaz Principal](img/Salud_Balanceo)
 
@@ -49,7 +49,7 @@ Usa el gráfico de historial para detectar celdas que caen de voltaje bajo carga
 
 ## Notas Técnicas Finales
 
-- **Versión**: 1.2
+- **Versión**: 1.3
 - **Pin Enable**: GPIO 5
 - **Pin OneWire**: GPIO 4
 - **Velocidad Serial**: 115200 baudios
