@@ -14,7 +14,8 @@ const MAKITA_MODELS = {
   "BL1430": { cap: "3.0Ah", cells: "8x 18650", config: "4S2P", v_nom: "14.4V" },
   "BL1440": { cap: "4.0Ah", cells: "8x 18650", config: "4S2P", v_nom: "14.4V" },
   "BL1450": { cap: "5.0Ah", cells: "8x 18650", config: "4S2P", v_nom: "14.4V" },
-  "BL1460": { cap: "6.0Ah", cells: "8x 18650", config: "4S2P", v_nom: "14.4V" }
+  "BL1460": { cap: "6.0Ah", cells: "8x 18650", config: "4S2P", v_nom: "14.4V" },
+  "BL1460A": { cap: "6.0Ah", cells: "8x 18650", config: "4S2P", v_nom: "14.4V" }
 };
 
 // --- Traducciones (ES, EN) ---
