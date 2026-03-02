@@ -36,7 +36,7 @@ Advanced diagnostic tool for Makita LXT 18V (BL18) and 14.4V (BL14) batteries ba
 - NPN Transistor (BC547 or similar) + 4.7kΩ Resistor (for the ENABLE pin).
 - 2x 4.7kΩ Resistors in parallel (from the 5V pin to the transistor collector).
 - 4.7kΩ Pull-up Resistor (for the DATA pin).
-- [View Electrical Schematic](./docs/en/esquema_electrico.md)
+- [View Electrical Schematic](./docs/en/electrical_schematic.md)
 
 ## 🚀 Quick Setup
 
