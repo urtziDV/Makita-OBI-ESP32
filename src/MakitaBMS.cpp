@@ -232,11 +232,13 @@ BMSStatus MakitaBMS::readDynamicData(BatteryData &data) {
         byte r[2]; float v[5], t_v = 0;
         // Solicita el voltaje de cada celda por separado
         for(int i=0; i<data.cell_count; i++) {
-            exec((const byte[]){(byte)(0x31 + i)}, 1, r, 2);
+            byte cmd_b = (byte)(0x31 + i);
+            exec(&cmd_b, 1, r, 2);
             v[i] = ((r[1]<<8)|r[0])/1000.0f;
         }
         
-        exec((const byte[]){0x52}, 1, r, 2); data.temp1=((r[1]<<8)|r[0])/100.0f;
+        byte cmd_52 = 0x52;
+        exec(&cmd_52, 1, r, 2); data.temp1=((r[1]<<8)|r[0])/100.0f;
         
         float min_v = 5.0, max_v = 0.0;
         for(int i=0; i<5; i++) { 
@@ -266,11 +268,13 @@ String MakitaBMS::getModel() {
 }
 
 String MakitaBMS::getF0513Model() {
-    cmd_and_read_cc((const byte[]){0x99}, 1, nullptr, 0); delay(100);
+    byte cmd_99 = 0x99;
+    cmd_and_read_cc(&cmd_99, 1, nullptr, 0); delay(100);
     makita.reset(); delayMicroseconds(400); makita.write(0x31);
     byte r[2];
     delayMicroseconds(90); r[0] = makita.read(); delayMicroseconds(90); r[1] = makita.read(); 
-    cmd_and_read_cc((const byte[]){0xF0, 0x00}, 2, nullptr, 0);
+    byte cmd_f0[] = {0xF0, 0x00};
+    cmd_and_read_cc(cmd_f0, 2, nullptr, 0);
     if (r[0] == 0xFF && r[1] == 0xFF) return "";
     char b[8]; sprintf(b, "BL%02X%02X", r[1], r[0]);
     return String(b);

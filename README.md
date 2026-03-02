@@ -26,7 +26,7 @@ Herramienta avanzada de diagnóstico para baterías Makita LXT de 18V (BL18) y 1
 - `/src`: Código fuente del firmware (C++).
 - `/data`: Interfaz web (HTML/JS/CSS).
 - `/lib`: Librerías personalizadas para el protocolo OneWire de Makita.
-- `/docs`: Documentación técnica, manuales y esquemas eléctricos.
+- `/docs`: Documentación técnica, manuales y esquemas eléctricos. ¡También disponible en [Inglés (English)](./README_EN.md)!
 
 ## 🛠️ Requisitos de Hardware
 
@@ -42,6 +42,20 @@ Herramienta avanzada de diagnóstico para baterías Makita LXT de 18V (BL18) y 1
 2. Conecta tu ESP32.
 3. Ejecuta **Upload** (Firmware).
 4. Ejecuta **Upload Filesystem Image** (Interfaz Web).
+
+## 📝 Historial de Versiones (Changelog)
+
+- **v1.3** (Actual):
+  - Añadido soporte para los modelos de batería **BL1460A**, **BL1850B-D** y placas BMS con microcontroladores STM32/RL78 (**LIPW014**, **LIPW015**, **LIPW017**).
+  - Documentación actualizada (Pin ENABLE corregido a GPIO 5 y esquemas de resistencias mejorados).
+- **v1.2**:
+  - Implementado soporte y renderizado dinámico para baterías **Makita BL14** (14.4V - 4 celdas).
+- **v1.1**:
+  - Incorporación de conexión **mDNS** (`http://makita.local`).
+  - **HUD Dinámico** de estado y gráfico de historial funcional **offline** (Chart.js local importado).
+  - Nueva interfaz premium para actualizaciones OTA y mejoras en UI/UX.
+- **v1.0**:
+  - Lanzamiento inicial estable (Versión refactorizada para ESP32 basada en el proyecto de Belik1982).
 
 ## ⚖️ Licencia y Uso
 
