@@ -285,11 +285,18 @@ String MakitaBMS::getF0513Model() {
  */
 BMSStatus MakitaBMS::ledTest(bool on) { 
     if (!_is_identified || _controller != ControllerType::STANDARD) return BMSStatus::ERROR_NOT_AVAILABLE;
+    
+    // 1. Comando de Inicialización
     digitalWrite(_enable_pin, LOW); delay(400);
     byte b[9]; 
     cmd_and_read_33(CMD_LED_TEST_INIT, 3, b, 9); 
+    digitalWrite(_enable_pin, HIGH); delay(50);
+
+    // 2. Comando de Ejecución (Requiere reconexión/power-cycle del BMS)
+    digitalWrite(_enable_pin, LOW); delay(400);
     cmd_and_read_33(on ? CMD_LED_ON : CMD_LED_OFF, 2, b, 9); 
     digitalWrite(_enable_pin, HIGH);
+    
     return BMSStatus::OK; 
 }
 
@@ -298,10 +305,17 @@ BMSStatus MakitaBMS::ledTest(bool on) {
  */
 BMSStatus MakitaBMS::clearErrors() { 
     if (!_is_identified || _controller != ControllerType::STANDARD) return BMSStatus::ERROR_NOT_AVAILABLE;
+    
+    // 1. Comando de Inicialización
     digitalWrite(_enable_pin, LOW); delay(400);
     byte b[9]; 
     cmd_and_read_33(CMD_CLEAR_ERR_INIT, 3, b, 9); 
+    digitalWrite(_enable_pin, HIGH); delay(50);
+    
+    // 2. Comando de Ejecución (Requiere reconexión/power-cycle del BMS)
+    digitalWrite(_enable_pin, LOW); delay(400);
     cmd_and_read_33(CMD_CLEAR_ERR_EXEC, 2, b, 9); 
     digitalWrite(_enable_pin, HIGH);
+    
     return BMSStatus::OK; 
 }
